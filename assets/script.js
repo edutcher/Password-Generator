@@ -13,9 +13,37 @@ function addNumbers() {
 }
 
 function addSpecial() {
-    tempArray.push(" !\"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~")
+    tempArray.push(" ", "!", "\"", "#", "$", "%", "&", "\'", "(", ",", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~")
 }
 
 function generatePass() {
 
+    var pass = ""
+    tempArray = [""];
+
+    if (document.getElementById("wantLower").checked) {
+        addLower();
+    }
+
+    if (document.getElementById("wantUpper").checked) {
+        addUpper();
+    }
+
+    if (document.getElementById("wantNumbers").checked) {
+        addNumbers();
+    }
+
+    if (document.getElementById("wantSpecial").checked) {
+        addSpecial();
+    }
+
+    for (var i = 0; i < document.getElementById("numChars").value; i++) {
+        var randnum = Math.floor(Math.random() * tempArray.length);
+
+        pass = pass + tempArray[randnum];
+    }
+
+    console.log(pass);
+
+    document.getElementById("passArea").innerHTML = pass;
 }
