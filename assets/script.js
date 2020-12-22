@@ -1,3 +1,14 @@
+function copyPass() {
+    const passArea = document.getElementById("passArea");
+
+    passArea.select();
+    passArea.setSelectionRange(0, 99999);
+
+    document.execCommand("copy");
+
+    window.getSelection().removeAllRanges();
+}
+
 function generatePass() {
     // empty out any data in the password and temp Array
     var pass = ""
@@ -25,6 +36,12 @@ function generatePass() {
         var randnum = Math.floor(Math.random() * tempArray.length);
 
         pass = pass + tempArray[randnum];
+    }
+
+    if (document.getElementById("wantHidden").checked) {
+        document.getElementById("passArea").style.opacity = 0;
+    } else {
+        document.getElementById("passArea").style.opacity = 1;
     }
 
     document.getElementById("passArea").innerHTML = pass;
