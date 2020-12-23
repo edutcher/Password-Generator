@@ -7,6 +7,16 @@ function copyPass() {
     document.execCommand("copy");
 
     window.getSelection().removeAllRanges();
+
+    document.getElementById("copyTip").innerHTML = "Copied!"
+}
+
+function outFunc(whatBtn) {
+    if (whatBtn === 0) {
+        document.getElementById("copyTip").innerHTML = "Copy to Clipboard";
+    } else if (whatBtn === 1) {
+        document.getElementById("genTip").innerHTML = "Generate Password";
+    }
 }
 
 function generatePass() {
@@ -45,4 +55,6 @@ function generatePass() {
     }
 
     document.getElementById("passArea").innerHTML = pass;
+
+    document.getElementById("genTip").innerHTML = "Generated"
 }
