@@ -1,16 +1,22 @@
 function copyPass() {
+    // create constant for referring to the HTML passArea box
     const passArea = document.getElementById("passArea");
 
+    // Select the contents of the passArea box
     passArea.select();
     passArea.setSelectionRange(0, 99999);
 
+    // Copy to Clipboard
     document.execCommand("copy");
 
+    // unselect the text
     window.getSelection().removeAllRanges();
 
+    // Change tooltip
     document.getElementById("copyTip").innerHTML = "Copied!"
 }
 
+// Reset tooltip when mouse leaves
 function outFunc(whatBtn) {
     if (whatBtn === 0) {
         document.getElementById("copyTip").innerHTML = "Copy to Clipboard";

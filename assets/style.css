@@ -1,7 +1,12 @@
+/* create anchor for tooltip*/
+
 .tool {
     position: relative;
     display: inline-block;
 }
+
+
+/* create look for tooltip, leave it not visible*/
 
 .tool .tiptext {
     visibility: hidden;
@@ -20,6 +25,9 @@
     transition: opacity 0.3s;
 }
 
+
+/* fixes positioning after tooltip*/
+
 .tool .tiptext::after {
     content: "";
     position: absolute;
@@ -30,6 +38,9 @@
     border-style: solid;
     border-color: #555 transparent transparent transparent;
 }
+
+
+/* unhide the tooltip when hovering over the element*/
 
 .tool:hover .tiptext {
     visibility: visible;
