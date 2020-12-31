@@ -47,20 +47,27 @@ function generatePass() {
         tempArray.push(" ", "!", "\"", "#", "$", "%", "&", "\'", "(", ",", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~");
     }
 
-    // Create the number of random characters requested by creating a random number and using that tempArray value
-    for (var i = 0; i < document.getElementById("numChars").value; i++) {
-        var randnum = Math.floor(Math.random() * tempArray.length);
+    if ((document.getElementById("numChars").value < 8) || (document.getElementById("numChars").value > 128)) {
+        document.getElementById("passArea").textContent = "I know you find it hilarious to attempt to input values outside the bounds provided, but they are implemented for a reason.  When you are done go ahead and stick to the provided bounds";
 
-        pass = pass + tempArray[randnum];
-    }
-
-    if (document.getElementById("wantHidden").checked) {
-        document.getElementById("passArea").style.opacity = 0;
+        document.getElementById("genTip").innerHTML = "Stop It"
     } else {
-        document.getElementById("passArea").style.opacity = 1;
+        // Create the number of random characters requested by creating a random number and using that tempArray value
+        for (var i = 0; i < document.getElementById("numChars").value; i++) {
+            var randnum = Math.floor(Math.random() * tempArray.length);
+
+            pass = pass + tempArray[randnum];
+        }
+
+        if (document.getElementById("wantHidden").checked) {
+            document.getElementById("passArea").style.opacity = 0;
+        } else {
+            document.getElementById("passArea").style.opacity = 1;
+        }
+
+
+        document.getElementById("passArea").textContent = pass;
+
+        document.getElementById("genTip").innerHTML = "Generated"
     }
-
-    document.getElementById("passArea").innerHTML = pass;
-
-    document.getElementById("genTip").innerHTML = "Generated"
 }

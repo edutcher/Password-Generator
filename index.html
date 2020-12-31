@@ -36,7 +36,7 @@
             <!--Input for number of characters requested for password-->
             <h5 class="text-center m-3">Number of characters:</h5>
             <div class="row m-3 justify-content-center">
-                <input id="numChars" type="number" value=12><br>
+                <input id="numChars" type="number" value=12 min=8 max=128><br>
             </div>
             <!-- Check if the user wants the password generated hidden, and gives a button to copy the generated password to the clipboard-->
             <div class="row m-3">
@@ -45,9 +45,9 @@
                     <h5 class="d-inline clearfix">Generate Hidden</h5>
                 </div>
                 <div class="col-5">
-                    <div class="tool">
-                        <button class="btn btn-info" onclick="copyPass()" onmouseout="outFunc(0)"><span id="copyTip" class="tiptext">Copy to Clipboard</span>Copy to Clipboard</button>
-                    </div>
+
+                    <button class="btn btn-info tool" onclick="copyPass()" onmouseout="outFunc(0)"><span id="copyTip" class="tiptext">Copy to Clipboard</span>Copy to Clipboard</button>
+
                 </div>
             </div>
             <!-- Output box for generated password-->
