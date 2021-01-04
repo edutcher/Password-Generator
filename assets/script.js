@@ -28,7 +28,7 @@ function outFunc(whatBtn) {
 function generatePass() {
     // empty out any data in the password and temp Array
     var pass = ""
-    var tempArray = [""];
+    var tempArray = [];
 
     // Check to see if checkboxes are marked, if so add their characters to the temp Array
     if (document.getElementById("wantLower").checked) {
@@ -47,6 +47,7 @@ function generatePass() {
         tempArray.push(" ", "!", "\"", "#", "$", "%", "&", "\'", "(", ",", "*", "+", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~");
     }
 
+    // Check if user manually changed value for password length outside the bounds created in the input field, if so provide snark.
     if ((document.getElementById("numChars").value < 8) || (document.getElementById("numChars").value > 128)) {
         document.getElementById("passArea").textContent = "I know you find it hilarious to attempt to input values outside the bounds provided, but they are implemented for a reason.  When you are done go ahead and stick to the provided bounds";
 
@@ -59,15 +60,17 @@ function generatePass() {
             pass = pass + tempArray[randnum];
         }
 
+        // Check if user wants password generated without being shown
         if (document.getElementById("wantHidden").checked) {
             document.getElementById("passArea").style.opacity = 0;
         } else {
             document.getElementById("passArea").style.opacity = 1;
         }
 
-
+        // Add created password to display area
         document.getElementById("passArea").textContent = pass;
 
+        // change tooltip
         document.getElementById("genTip").innerHTML = "Generated"
     }
 }
